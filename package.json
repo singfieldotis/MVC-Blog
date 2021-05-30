@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/singfieldotis/MVC-Blog/issues"
   },
-  "homepage": "https://github.com/singfieldotis/MVC-Blog#readme"
+  "homepage": "https://github.com/singfieldotis/MVC-Blog#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mysql": "^2.18.1"
+  }
 }
