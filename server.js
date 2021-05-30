@@ -1,11 +1,8 @@
-const express = require('express');
-const routes = require('./controllers');
-
 const path = require('path');
-const exphbs = require('express-handlebars');
-const helpers = require('./utils/helpers');
-
+const express = require('express');
 const session = require('express-session');
+const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,15 +24,15 @@ app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(routes)
-
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-sequelize.sync({ force: false }).then(() => {
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(require('./controllers/'));
+
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
